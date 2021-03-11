@@ -80,7 +80,7 @@ Namespace ContentAnalyzer
 			End Try
 		End Sub
 
-		Public Sub Log(ByVal fileName As String, ByVal tag As String, ByVal [namespace] As String, ByVal prefix As String)
+		Public Sub Log(ByVal fileName As String, ByVal tag As String, ByVal [namespace] As String, ByVal prefix As String) Implements ILogUnsupportedContentService.Log
 
 			If unsupportedItems.ContainsKey(tag.ToLower()) Then
 				Dim item As New UnsupportedContentItem()
