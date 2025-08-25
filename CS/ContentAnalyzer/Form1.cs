@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace ContentAnalyzer {
     public partial class Form1 : RibbonForm {
-        readonly List<UnsupportedContentItem> log = new List<UnsupportedContentItem>();        
+        readonly List<UnsupportedContentItem> log = new List<UnsupportedContentItem>();
 
         public Form1() {
             InitializeComponent();
@@ -45,40 +45,23 @@ namespace ContentAnalyzer {
     public class LogUnsupportedContentService : ILogUnsupportedContentService {
         readonly List<UnsupportedContentItem> log;
         Dictionary<string, string> unsupportedItems;
-        string dictionaryPath = "dictionary.csv";
+        string dictionaryPath = "ContentAnalyzerItems.csv";
         public LogUnsupportedContentService(List<UnsupportedContentItem> log) {
             this.log = log;
             this.unsupportedItems = new Dictionary<string, string>();
 
-            InitializeDictionary();            
+            InitializeDictionary();
         }
 
         private void InitializeDictionary()
         {
-            try
+            if (System.IO.File.Exists(dictionaryPath))
             {
-                XElement pathElement = XDocument.Parse(System.IO.File.ReadAllText("Settings.config"))
-                                   .Descendants("configuration")
-                                   .Descendants("dictionaryPath")
-                                   .FirstOrDefault();
-
-                if (pathElement != null)
+                string[] dictionaryItems = System.IO.File.ReadAllLines(dictionaryPath);
+                foreach (string item in dictionaryItems)
                 {
-                    string path = pathElement.Value;
-                    using (WebClient client = new WebClient())
-                        client.DownloadFile(path, dictionaryPath);                        
-                }
-            }
-            finally
-            {
-                if (System.IO.File.Exists(dictionaryPath))
-                {
-                    string[] dictionaryItems = System.IO.File.ReadAllLines(dictionaryPath);
-                    foreach (string item in dictionaryItems)
-                    {
-                        string[] values = item.Split(';');
-                        unsupportedItems[values[0].ToLower()] = values[1].ToLower();
-                    }
+                    string[] values = item.Split(';');
+                    unsupportedItems[values[0].ToLower()] = values[1].ToLower();
                 }
             }
         }
