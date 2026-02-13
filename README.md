@@ -14,7 +14,7 @@ Run the application and open your document. The **Skipped Content** table displa
 
 **Note:** We are continually updating our **Document Content Validator** app. If it did not help you identify the issue with your document, [submit a ticket to our Support Center](https://supportcenter.devexpress.com/ticket/create). Attach your document to the ticket and describe the steps needed to reproduce your issue. We will examine your document for unsupported tags and update our **Document Content Validator**.
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=rich-text-editor-document-content-validator&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=rich-text-editor-document-content-validator&~~~was_helpful=no)
 
